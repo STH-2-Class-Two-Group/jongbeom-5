@@ -32,10 +32,13 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 def run_server(port=8000):
 # 지정한 포트 번호로 서버를 설정하고 실행하는 함수를 정의합니다. (기본값: 8000)
-
+    # ip주소 , port : 문
     server_address = ('', port)
     # 서버가 대기할 IP 주소와 포트를 튜플로 설정합니다. ''는 모든 네트워크 인터페이스(localhost 포함)에서의 접속을 허용함을 의미합니다.
 
+    # HTTPServer()
+    # 1번째 인자로 ip주소와 posr 값을 갖는 튜플
+    # 2번째 인자는 서버의 행동을 정의한 BaseHTTPRequestHandler 로 만든 객체
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     # 설정한 주소/포트와 요청 처리 클래스(SimpleHTTPRequestHandler)를 결합하여 HTTP 서버 객체를 생성합니다.
 
@@ -51,3 +54,32 @@ if __name__ == '__main__':
 
     run_server()
     # run_server 함수를 호출하여 실제 서버를 가동합니다.
+    
+    
+class Animal: BaseHTTPRequestHandler
+    def __init__(self):
+        self.name = "동물"
+        
+    def eat(self):
+        print("밥먹을 시간")
+    
+    def do_GET(self):
+        pass
+        
+class Dog(Animal):  SimpleHTTPRequestHandler 
+    def __init__(self):
+        super().__init__()
+    
+    def run(self):
+        print("달리기")
+        
+    def eat(self):
+        print("사료먹을 시간")
+
+class Fish(Animal):
+    def __init__(self):
+        super().__init__()
+    
+    def swim(self):
+        print("수영하기")
+        
