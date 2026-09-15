@@ -11,19 +11,32 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     # GET 요청 처리
     def do_GET(self):
     # 클라이언트가 GET 방식으로 요청을 보냈을 때 자동으로 호출되는 메서드입니다.
-
+        # HTTP 상태 코드 설정
+        # 200은 성공
+        # 404 NotFound 서버를 찾지 못함
+        # 등등
         self.send_response(200)
         # 클라이언트에게 성공 상태 코드인 '200 OK' 응답 헤더를 보냅니다.
 
+        # 헤더
+        # 본문의 형식, 길이 등등 여러 내용을 담고 있음.
+        # AI로 찾아보면 좋음
         self.send_header('Content-type', 'application/json')
         # 응답 데이터의 형식이 'JSON' 데이터임을 알리는 헤더를 추가합니다.
 
+        # 헤더랑 본문을 구분해 주는 함수
         self.end_headers()
         # HTTP 헤더 작성이 끝났음을 알리고 헤더 전송을 완료합니다.
 
+        # 본문을 작성하는 코드
+        
         response = {"message": "Hello! GET 요청을 성공적으로 받았습니다."}
         # 클라이언트에게 응답으로 전달할 데이터를 파이썬 딕셔너리 형태로 작성합니다.
-
+        # 실제로 응답을 보내는 코드 
+        # json.dumps(response, ensure_ascii=False).encode('utf-8') : 딕셔너리를 JSON 형식으로 변환해주는 함수
+        # ensure_ascii=False : 아스키 코드로 변환하지 않는 옵션
+        # utf-8 : 한국어가 깨지지 않게 도와주는 함수
+        # JSON 형식이 뭔지 검색해보기
         self.wfile.write(json.dumps(response, ensure_ascii=False).encode('utf-8'))
         # json.dumps(): 딕셔너리를 JSON 문자열로 변환합니다.
         # .encode('utf-8'): 문자열을 네트워크 전송이 가능한 바이트(byte) 형태로 변환합니다.
@@ -63,7 +76,7 @@ class Animal:
     def eat(self):
         print("밥먹을 시간")
     
-class Dog(Animal): 
+class Dog(Animal):
     def __init__(self):
         super().__init__()
     
@@ -79,4 +92,3 @@ class Fish(Animal):
     
     def swim(self):
         print("수영하기")
-        
