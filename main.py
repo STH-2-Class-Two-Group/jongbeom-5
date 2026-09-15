@@ -54,19 +54,16 @@ if __name__ == '__main__':
 
     run_server()
     # run_server 함수를 호출하여 실제 서버를 가동합니다.
+
     
-    
-class Animal: BaseHTTPRequestHandler
+class Animal:
     def __init__(self):
         self.name = "동물"
         
     def eat(self):
         print("밥먹을 시간")
     
-    def do_GET(self):
-        pass
-        
-class Dog(Animal):  SimpleHTTPRequestHandler 
+class Dog(Animal): 
     def __init__(self):
         super().__init__()
     
